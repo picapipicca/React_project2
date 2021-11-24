@@ -1,17 +1,29 @@
 import React from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import { createBucket } from "./redux/modules/bucket";
 
 const Addword = (props) => {
 
-    const history = useHistory();
-    const word = React.useRef();
-    const explain = React.useRef();
-    const etc = React.useRef();
+    
+    const dispatch = useDispatch();
+    const word = React.useRef(null);
+    const explain = React.useRef(null);
+    const etc = React.useRef(null);
+    
 
+
+
+    const addWordList = () =>{
+        
+        dispatch(createBucket({
+             word : word.current.value,
+             explain:explain.current.value,
+             etc:etc.current.value}));
+        };
     return(
                 <>
-                    <h2>단어 추가하기</h2>
+                    <h2 style={{textAlign: "center",}}>단어 추가하기</h2>
                     <Box>
                         <Contents>
                             <Category>단어</Category>
@@ -36,9 +48,7 @@ const Addword = (props) => {
                             </Input>
                         </Contents>
                     </Box>
-                    <Button onClick = {()=> {
-                        history.goBack();
-                    }}>추가하기</Button>
+                    <Button onClick={addWordList}> 추가하기</Button>
                    
      
                 </>
