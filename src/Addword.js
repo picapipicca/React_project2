@@ -83,17 +83,20 @@ const Addword = (props) => {
    const Input = styled.div`
    background-color: #fff;
    border: 1px solid #fff;
+   display: grid;
+   place-items: center;
    & input {
     background-color: #fff;
     padding: 10px;
-    margin: 5px;
     border-radius: 5px;
     border: 1px solid #ddd;
-    width: 90%;
+    width: 85%;
+    
    }
    & input:focus {
      outline :none;
      border: 1px solid orange;
+     width: 85%;
    }
    `;
    const Button = styled.button`
@@ -105,5 +108,8 @@ const Addword = (props) => {
     border-radius: 50px;
     border:#5894f5;
     cursor: pointer;
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+      }  
    `;
 export default Addword;

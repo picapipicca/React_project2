@@ -53,7 +53,6 @@ function App() {
         <Route path="/addword">
           <Addword/>
         </Route>
-        <Button onClick={()=> {history.push("/addword"); }}>Add words+</Button>
       </Container>
       
     </div>
@@ -70,16 +69,5 @@ const Container = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-`;
-const Button = styled.button`
-  background: repeating-linear-gradient( white 0px, lightblue 100px);
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  position: fixed; 
-  bottom: 30px; 
-  right: 270px;
-  border:transparent;
-  
 `;
 export default App;

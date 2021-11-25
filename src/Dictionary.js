@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { db } from "./firebase";
 import { collection, doc, deleteDoc } from "firebase/firestore";
 import { deleteBucket ,deleteBucketFB } from "./redux/modules/bucket";
+import {keyframes} from "styled-components";
 
 const Dictionary = (props) => {
 
@@ -16,6 +17,7 @@ const Dictionary = (props) => {
     return(
         <>
             <ListStyle>
+                <p>
                 {my_lists.map((list,index)=> {
                     return(
                         <Card>
@@ -39,9 +41,9 @@ const Dictionary = (props) => {
                         </Card>       
                     );
                     })}
-                
+                </p>
             </ListStyle>
-                
+            <Button onClick={()=> {history.push("/addword"); }}>Add words+</Button>
         </>    
     );
 };
@@ -53,7 +55,7 @@ const ListStyle = styled.div`
 const Card = styled.div`
   padding: 16px;
   background-color: #fff;
-  margin: 8px;
+  margin: 20px;
   max-width:25vw;
   max-height: 25vh;
   border: 1px solid #fff;
@@ -103,6 +105,21 @@ const Example = styled.div`
     text-align: left;
     max-height: 100%;
 `;
+const Button = styled.button`
+  background: repeating-linear-gradient( white 0px, lightblue 100px);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: fixed; 
+  bottom: 30px; 
+  right: 270px;
+  cursor: pointer;
+  border:transparent;
+  &:hover {
+       color : #fff;
+       background: #5292eb;
+       box-shadow: 0 0 10px #2196f3, 0 0 30px #2196f3, 0 0 60px #2196f3;
+      }  
+`;
 
-
-export default Dictionary;
+export default Dictionary; 
