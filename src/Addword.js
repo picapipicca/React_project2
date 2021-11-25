@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
-import { createBucket } from "./redux/modules/bucket";
+import {useHistory} from "react-router-dom"
+import { createBucket ,addBucketFB} from "./redux/modules/bucket";
+
 
 const Addword = (props) => {
 
-    
+    const history = useHistory();
     const dispatch = useDispatch();
     const word = React.useRef(null);
     const explain = React.useRef(null);
@@ -15,11 +17,15 @@ const Addword = (props) => {
 
 
     const addWordList = () =>{
-        
-        dispatch(createBucket({
-             word : word.current.value,
-             explain:explain.current.value,
-             etc:etc.current.value}));
+        dispatch(addBucketFB({
+                 word :word.current.value,
+                 explain:explain.current.value,
+                 etc:etc.current.value}));
+
+        // dispatch(createBucket({
+        //      word : word.current.value,
+        //      explain:explain.current.value,
+        //      etc:etc.current.value}));
         };
     return(
                 <>
@@ -48,9 +54,10 @@ const Addword = (props) => {
                             </Input>
                         </Contents>
                     </Box>
-                    <Button onClick={addWordList}> 추가하기</Button>
-                   
-     
+                    <Button onClick={() => {
+                        addWordList();
+                        history.goBack();
+                        }}> 추가하기</Button>
                 </>
                 
         );
@@ -97,5 +104,6 @@ const Addword = (props) => {
     margin: auto;
     border-radius: 50px;
     border:#5894f5;
+    cursor: pointer;
    `;
 export default Addword;
